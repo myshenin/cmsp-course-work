@@ -60,3 +60,6 @@ typings/
 # IDE folders
 .idea/
 
+# Serverless directories
+.serverless
+
