@@ -21,16 +21,15 @@ provider:
   name: aws
   runtime: nodejs6.10
 
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  stage: dev
+  region: eu-central-1
 
-# you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "lambda:InvokeAsync"
+        - "lambda:InvokeFunction"
+      Resource: ["*"]
 #    - Effect: "Allow"
 #      Action:
 #        - "s3:PutObject"
