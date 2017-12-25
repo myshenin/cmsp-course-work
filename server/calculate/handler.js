@@ -93,7 +93,28 @@ module.exports.calculate = (event, context, callback) => {
                 }
                 resolve();
             }
-        }))])
+        })),
+
+        new Promise((resolve, reject) => lambda.invoke({
+            FunctionName: 'analitic-dev-hello',
+            Payload: JSON.stringify({
+                p: input.p,
+                n: input.n
+            })
+        }, (error, data) => {
+            if (error) {
+                callback(null, {
+                    statusCode: 500,
+                    body: JSON.stringify(error),
+                });
+                reject();
+            } else {
+                const result = JSON.parse(JSON.parse(data.Payload).body);
+                input.data.analitic = result;
+                resolve();
+            }
+        })),
+    ])
         .then(() => {
             input.iteration++;
             const response = {
