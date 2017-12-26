@@ -9,6 +9,7 @@ import {MuiThemeProvider} from "material-ui";
 
 import ContentPaper from "./components/ContentPaper";
 import InputsBubble from "./components/InputsBubble";
+import DataBubble from "./components/DataBubble";
 
 injectTapEventPlugin();
 
@@ -23,6 +24,7 @@ class App extends React.Component {
                 <div className="main">
                     <InputsBubble/>
                     <ContentPaper/>
+                    <DataBubble/>
                 </div>
             </MuiThemeProvider>
         );
