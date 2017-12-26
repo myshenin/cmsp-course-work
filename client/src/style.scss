@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
 $R: 300;
+$background-color: #ffd54f;
 
 * {
   font-family: 'Roboto', sans-serif;
@@ -8,6 +9,7 @@ $R: 300;
 
 .main {
   height: 100vh;
+  background: $background-color;
 
   display: grid;
   grid-template-columns: ($R/2)+px ($R/2)+px ($R/2)+px auto ($R/2)+px ($R/2)+px ($R/2)+px;
