@@ -22,12 +22,16 @@ const config = {
                 }
             },
             {
-                test: /\.css$/,
+                test: [/\.scss$/, /\.css$/],
                 loader: 'style-loader'
             },
             {
-                test: /\.css$/,
+                test: [/\.scss$/, /\.css$/],
                 loader: 'css-loader'
+            },
+            {
+                test: /\.scss$/,
+                loader: "sass-loader"
             }
         ],
     },
@@ -38,8 +42,8 @@ const config = {
                 to: './index.html'
             },
             {
-                from: './src/style.css',
-                to: './style.css'
+                from: './src/style.scss',
+                to: './style.scss'
             }
         ])
     ]

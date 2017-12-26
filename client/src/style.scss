@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+$R: 300;
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.main {
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: ($R/2)+px ($R/2)+px ($R/2)+px auto ($R/2)+px ($R/2)+px ($R/2)+px;
+  grid-template-rows: ($R/4)+px ($R/2)+px ($R/2)+px auto ($R)+px auto auto;
+
+  .content-sheet {
+    grid-column: 3/6;
+    grid-row: 3/7;
+  }
+}

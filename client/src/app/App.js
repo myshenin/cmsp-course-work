@@ -1,7 +1,15 @@
 import 'normalize.css';
+import '../style.scss';
 
 import React from 'react';
 import {render} from 'react-dom';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import {MuiThemeProvider} from "material-ui";
+
+import ContentPaper from "./components/ContentPaper";
+
+injectTapEventPlugin();
 
 class App extends React.Component {
     constructor(props) {
@@ -10,7 +18,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>HELLO</div>
+            <MuiThemeProvider>
+                <div className="main">
+                    <ContentPaper/>
+                </div>
+            </MuiThemeProvider>
         );
     }
 }
