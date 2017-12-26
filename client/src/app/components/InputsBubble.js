@@ -1,28 +1,41 @@
 import React from 'react';
 import {Paper, RaisedButton, TextField} from "material-ui";
-import {brown500} from "material-ui/styles/colors";
+import {amber300, amber50, brown500} from "material-ui/styles/colors";
 
 const style = {
     paper: {
         backgroundColor: brown500
     },
-    textFields: [
-        {
-            gridColumn: '1/3',
-            gridRow: '1/2',
-            width: '100%'
+    textFields: {
+        elements: [
+            {
+                gridColumn: '1/3',
+                gridRow: '1/2',
+                width: '100%'
+            },
+            {
+                gridColumn: '1/3',
+                gridRow: '2/3',
+                width: '100%'
+            },
+            {
+                gridColumn: '1/3',
+                gridRow: '3/4',
+                width: '100%'
+            }
+        ],
+        underlineFocusStyle: {
+            borderColor: amber300
         },
-        {
-            gridColumn: '1/3',
-            gridRow: '2/3',
-            width: '100%'
+        hintStyle: {
+            color: amber50
         },
-        {
-            gridColumn: '1/3',
-            gridRow: '3/4',
-            width: '100%'
+        inputStyle: {
+            color: amber50
         }
-    ],
+    }
+
+    ,
     buttons: [
         {
             margin: '5px',
@@ -48,21 +61,30 @@ export default class InputsBubble extends React.Component {
                 <div>
                     <TextField
                         hintText="N"
-                        style={style.textFields[0]}
+                        style={style.textFields.elements[0]}
+                        underlineFocusStyle={style.textFields.underlineFocusStyle}
+                        hintStyle={style.textFields.hintStyle}
+                        inputStyle={style.textFields.inputStyle}
                         name='N'
                     />
                     <TextField
                         hintText="p"
-                        style={style.textFields[1]}
+                        style={style.textFields.elements[1]}
+                        underlineFocusStyle={style.textFields.underlineFocusStyle}
+                        hintStyle={style.textFields.hintStyle}
+                        inputStyle={style.textFields.inputStyle}
                         name='p'
                     />
                     <TextField
                         hintText='Итерации'
-                        style={style.textFields[2]}
+                        style={style.textFields.elements[2]}
+                        underlineFocusStyle={style.textFields.underlineFocusStyle}
+                        hintStyle={style.textFields.hintStyle}
+                        inputStyle={style.textFields.inputStyle}
                         name='iterations'
                     />
-                    <RaisedButton label="СТАРТ" style={style.buttons[0]} />
-                    <RaisedButton label="СТОП" style={style.buttons[1]} />
+                    <RaisedButton label="СТАРТ" style={style.buttons[0]}/>
+                    <RaisedButton label="СТОП" style={style.buttons[1]}/>
                 </div>
             </Paper>
         );
