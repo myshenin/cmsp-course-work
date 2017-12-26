@@ -38,53 +38,87 @@ const style = {
     ,
     buttons: [
         {
-            margin: '5px',
+            margin: '6px',
             gridColumn: '1/2',
             gridRow: '4/5',
         },
         {
-            margin: '5px',
+            margin: '6px',
             gridColumn: '2/3',
             gridRow: '4/5',
         }
     ]
 };
 
+
 export default class InputsBubble extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            textFields: [
+                {
+                    name: 'N',
+                    hint: 'N',
+                    value: '',
+                    valid: false
+                },
+                {
+                    name: 'p',
+                    hint: 'p',
+                    value: '',
+                    valid: false
+                },
+                {
+                    name: 'iterations',
+                    hint: 'Итерации',
+                    value: '',
+                    valid: false
+                }
+            ]
+        };
+    }
+
+    onChange(event) {
+        const searchElement = this.state.textFields.find(item => item.name === event.target.name);
+        const textFields = [...this.state.textFields];
+        textFields.splice(
+            this.state.textFields.indexOf(searchElement),
+            1,
+            Object.assign(searchElement, {
+                value: event.target.value,
+                valid: event.target.value.match(/^(-?\d+\.?\d*)$/ig)
+            })
+        );
+        this.setState({
+            textFields: textFields
+        });
     }
 
     render() {
         return (
             <Paper className='inputs-bubble' circle={true} zDepth={2} style={style.paper}>
                 <div>
-                    <TextField
-                        hintText="N"
-                        style={style.textFields.elements[0]}
+                    {this.state.textFields.map((item, index) => <TextField
+                        key={index}
+                        hintText={item.hint}
+                        style={style.textFields.elements[index]}
                         underlineFocusStyle={style.textFields.underlineFocusStyle}
                         hintStyle={style.textFields.hintStyle}
                         inputStyle={style.textFields.inputStyle}
-                        name='N'
+                        name={item.name}
+                        value={item.value}
+                        onChange={this.onChange.bind(this)}
+                    />)}
+                    <RaisedButton
+                        label="СТАРТ"
+                        style={style.buttons[0]}
+                        disabled={!this.state.textFields.every(item => item.valid)}
                     />
-                    <TextField
-                        hintText="p"
-                        style={style.textFields.elements[1]}
-                        underlineFocusStyle={style.textFields.underlineFocusStyle}
-                        hintStyle={style.textFields.hintStyle}
-                        inputStyle={style.textFields.inputStyle}
-                        name='p'
+                    <RaisedButton
+                        label="СТОП"
+                        style={style.buttons[1]}
+                        disabled={!this.state.textFields.every(item => item.valid)}
                     />
-                    <TextField
-                        hintText='Итерации'
-                        style={style.textFields.elements[2]}
-                        underlineFocusStyle={style.textFields.underlineFocusStyle}
-                        hintStyle={style.textFields.hintStyle}
-                        inputStyle={style.textFields.inputStyle}
-                        name='iterations'
-                    />
-                    <RaisedButton label="СТАРТ" style={style.buttons[0]}/>
-                    <RaisedButton label="СТОП" style={style.buttons[1]}/>
                 </div>
             </Paper>
         );
