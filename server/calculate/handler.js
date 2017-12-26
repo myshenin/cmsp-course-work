@@ -116,10 +116,12 @@ module.exports.calculate = (event, context, callback) => {
         })),
     ])
         .then(() => {
-            input.iteration++;
             const response = {
                 statusCode: 200,
-                body: JSON.stringify(input),
+                headers: {
+                    "Access-Control-Allow-Origin" : "*"
+                },
+                body: JSON.stringify(input)
             };
 
             callback(null, response);

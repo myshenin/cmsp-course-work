@@ -94,6 +94,14 @@ export default class InputsBubble extends React.Component {
         });
     }
 
+    onStart() {
+        this.props.next.getNext({
+           n: Number.parseInt(this.state.textFields[0].value),
+           p: Number.parseFloat(this.state.textFields[1].value),
+           iterations: Number.parseInt(this.state.textFields[2].value),
+        });
+    }
+
     render() {
         return (
             <Paper className='inputs-bubble' circle={true} zDepth={2} style={style.paper}>
@@ -113,6 +121,7 @@ export default class InputsBubble extends React.Component {
                         label="СТАРТ"
                         style={style.buttons[0]}
                         disabled={!this.state.textFields.every(item => item.valid)}
+                        onClick={this.onStart.bind(this)}
                     />
                     <RaisedButton
                         label="СТОП"

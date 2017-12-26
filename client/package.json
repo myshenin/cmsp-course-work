@@ -10,12 +10,16 @@
   "author": "Anton Myshenin",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.1",
     "material-ui": "^0.20.0",
     "mathsass": "^0.10.1",
     "normalize.css": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-tap-event-plugin": "^3.0.2"
+    "react-redux": "^5.0.6",
+    "react-tap-event-plugin": "^3.0.2",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
