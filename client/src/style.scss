@@ -12,6 +12,7 @@ $background-color: #ffd54f;
   box-sizing: border-box;
   height: 100%;
   padding: ($radius * (sqrt(2) - 1) / (2 * sqrt(2)) + 10)+px;
+  display: grid;
 }
 
 .main {
@@ -34,6 +35,8 @@ $background-color: #ffd54f;
     z-index: 2;
     > div {
       @include bubble($R);
+      grid-template-rows: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
