@@ -8,6 +8,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import {MuiThemeProvider} from "material-ui";
 
 import ContentPaper from "./components/ContentPaper";
+import InputsBubble from "./components/InputsBubble";
 
 injectTapEventPlugin();
 
@@ -20,6 +21,7 @@ class App extends React.Component {
         return (
             <MuiThemeProvider>
                 <div className="main">
+                    <InputsBubble/>
                     <ContentPaper/>
                 </div>
             </MuiThemeProvider>
