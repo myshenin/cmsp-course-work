@@ -1,7 +1,6 @@
 import React from 'react';
 import {Paper, RaisedButton, TextField} from "material-ui";
 import {amber300, amber50, brown500} from "material-ui/styles/colors";
-import Rx from 'rxjs/Rx';
 
 const style = {
     paper: {
@@ -77,9 +76,6 @@ export default class InputsBubble extends React.Component {
                 }
             ]
         };
-        Rx.Observable.of(this.props.next.next).subscribe(value => {
-            console.log(value);
-        });
     }
 
     onChange(event) {
