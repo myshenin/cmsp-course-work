@@ -116,6 +116,8 @@ module.exports.calculate = (event, context, callback) => {
         })),
     ])
         .then(() => {
+            input.iteration++;
+
             const response = {
                 statusCode: 200,
                 headers: {

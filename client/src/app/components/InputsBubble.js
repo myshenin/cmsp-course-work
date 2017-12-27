@@ -1,6 +1,7 @@
 import React from 'react';
 import {Paper, RaisedButton, TextField} from "material-ui";
 import {amber300, amber50, brown500} from "material-ui/styles/colors";
+import Rx from 'rxjs/Rx';
 
 const style = {
     paper: {
@@ -76,6 +77,9 @@ export default class InputsBubble extends React.Component {
                 }
             ]
         };
+        Rx.Observable.of(this.props.next.next).subscribe(value => {
+            console.log(value);
+        });
     }
 
     onChange(event) {
@@ -95,11 +99,12 @@ export default class InputsBubble extends React.Component {
     }
 
     onStart() {
-        this.props.next.getNext({
-           n: Number.parseInt(this.state.textFields[0].value),
-           p: Number.parseFloat(this.state.textFields[1].value),
-           iterations: Number.parseInt(this.state.textFields[2].value),
-        });
+        const initialPayload = {
+            n: Number.parseInt(this.state.textFields[0].value),
+            p: Number.parseFloat(this.state.textFields[1].value),
+            iteration: 0,
+        };
+        this.props.next.getNext(initialPayload);
     }
 
     render() {

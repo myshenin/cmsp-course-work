@@ -37,7 +37,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        next: state.probability
+        next: state.next
     };
 };
 
