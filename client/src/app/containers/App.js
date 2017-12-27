@@ -27,7 +27,7 @@ class App extends React.Component {
             <MuiThemeProvider>
                 <div className="main">
                     <InputsBubble next={this.props}/>
-                    <ContentPaper/>
+                    <ContentPaper next={this.props}/>
                     <DataBubble/>
                 </div>
             </MuiThemeProvider>
