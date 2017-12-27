@@ -74,8 +74,15 @@ export default class InputsBubble extends React.Component {
                     value: '',
                     valid: false
                 }
-            ]
+            ],
+            stop: false,
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if ((nextProps.next.next.iteration < this.state.textFields[2].value) && (!this.state.stop)) {
+            this.props.next.getNext(nextProps.next.next);
+        }
     }
 
     onChange(event) {
@@ -100,7 +107,16 @@ export default class InputsBubble extends React.Component {
             p: Number.parseFloat(this.state.textFields[1].value),
             iteration: 0,
         };
-        this.props.next.getNext(initialPayload);
+        this.setState({
+            stop: false,
+        });
+        this.props.next.getNext(Object.keys(this.props.next.next).length? this.props.next.next: initialPayload);
+    }
+
+    onStop() {
+        this.setState({
+            stop: true,
+        })
     }
 
     render() {
@@ -128,6 +144,7 @@ export default class InputsBubble extends React.Component {
                         label="СТОП"
                         style={style.buttons[1]}
                         disabled={!this.state.textFields.every(item => item.valid)}
+                        onClick={this.onStop.bind(this)}
                     />
                 </div>
             </Paper>

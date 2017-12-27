@@ -1,4 +1,4 @@
-const next = (state = null, action) => {
+const next = (state = {}, action) => {
     switch (action.type) {
         case 'GET_NEXT_FULFILLED': {
            state = action.payload.data;
