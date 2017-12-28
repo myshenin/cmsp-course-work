@@ -110,7 +110,7 @@ export default class InputsBubble extends React.Component {
         this.setState({
             stop: false,
         });
-        this.props.next.getNext(Object.keys(this.props.next.next).length? this.props.next.next: initialPayload);
+        this.props.next.getNext(initialPayload);
     }
 
     onStop() {

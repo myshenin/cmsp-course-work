@@ -1,5 +1,5 @@
 import React from 'react';
-import {Paper, Toggle} from "material-ui";
+import {Paper, Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, Toggle} from "material-ui";
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import {blueGrey300, blueGrey600, brown300, brown600} from "material-ui/styles/colors";
 
@@ -59,6 +59,24 @@ export default class ContentPaper extends React.Component {
         });
     }
 
+    constructTable(data) {
+        if (data) {
+            return this.state.data.map(item => {
+                return (
+                    <TableRow key={item.name}>
+                        <TableRowColumn>{item.name}</TableRowColumn>
+                        <TableRowColumn>{item.analitic}</TableRowColumn>
+                        <TableRowColumn>{item.inverseTransformSampling}</TableRowColumn>
+                        <TableRowColumn>{item.metropolisMethod}</TableRowColumn>
+                        <TableRowColumn>{item.neumannMethod}</TableRowColumn>
+                    </TableRow>
+                )
+            });
+        } else {
+            return '';
+        }
+    }
+
     render() {
         return (
             <Paper className='content-sheet' zDepth={2}>
@@ -89,7 +107,27 @@ export default class ContentPaper extends React.Component {
                                 </BarChart>
                             </ResponsiveContainer>
                         </div> :
-                        ''}
+                        <div className='table'>
+                            <Table>
+                                <TableHeader
+                                    displaySelectAll={false}
+                                    adjustForCheckbox={false}
+                                >
+                                    <TableRow>
+                                        <TableHeaderColumn>Величина</TableHeaderColumn>
+                                        <TableHeaderColumn>Аналитический</TableHeaderColumn>
+                                        <TableHeaderColumn>Обр. функц.</TableHeaderColumn>
+                                        <TableHeaderColumn>м. Метрополиса</TableHeaderColumn>
+                                        <TableHeaderColumn>м. Неймана</TableHeaderColumn>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody
+                                    displayRowCheckbox={false}
+                                >
+                                    {this.constructTable(this.props.next.next)}
+                                </TableBody>
+                            </Table>
+                        </div>}
                 </div>
             </Paper>
         );

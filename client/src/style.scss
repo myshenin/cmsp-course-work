@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 @import '../node_modules/mathsass/dist/math';
 
-$R: 300;
+$R: 150;
 $background-color: #ffd54f;
 
 * {
@@ -15,15 +15,79 @@ $background-color: #ffd54f;
   display: grid;
 }
 
+//.main {
+//  height: 100vh;
+//  background: $background-color;
+//
+//  display: grid;
+//  grid-template-columns: ($R/2)+px ($R/2)+px ($R/2)+px auto ($R/2)+px ($R/2)+px ($R/2)+px;
+//  grid-template-rows: ($R/18)+px ($R/2)+px ($R/2)+px auto ($R)+px auto auto;
+//
+//  .content-sheet {
+//    grid-column: 3/6;
+//    grid-row: 3/7;
+//    z-index: 1;
+//
+//    > div {
+//      height: 100%;
+//
+//      display: grid;
+//      grid-template-columns: ($R/2)+px auto ($R/2-20)+px ($R/4+10)+px ($R/4)+px;
+//      grid-template-rows: ($R/6)+px ($R/4)+px auto ($R/5)+px;
+//      > .switch {
+//        grid-column: 3/5;
+//        grid-row: 2/3;
+//      }
+//      > .chart, .table {
+//        grid-column: 2/4;
+//        grid-row: 3/4;
+//      }
+//    }
+//  }
+//
+//  .inputs-bubble {
+//    grid-column: 2/4;
+//    grid-row: 2/4;
+//    z-index: 2;
+//    > div {
+//      @include bubble($R);
+//      grid-template-rows: repeat(4, 1fr);
+//      grid-template-columns: repeat(2, 1fr);
+//    }
+//  }
+//
+//  .data-bubble {
+//    grid-column: 5/7;
+//    grid-row: 5/6;
+//    z-index: 3;
+//    > div {
+//      @include bubble($R);
+//    }
+//  }
+//}
+
 .main {
   height: 100vh;
   background: $background-color;
+  overflow: auto;
 
   display: grid;
-  grid-template-columns: ($R/2)+px ($R/2)+px ($R/2)+px auto ($R/2)+px ($R/2)+px ($R/2)+px;
-  grid-template-rows: ($R/18)+px ($R/2)+px ($R/2)+px auto ($R)+px auto auto;
+  grid-template-columns: ($R/4)+px ($R)+px ($R)+px auto ($R)+px ($R)+px ($R/4)+px;
+  grid-template-rows: ($R/4)+px ($R)+px ($R)+px auto (2*$R)+px ($R/1.5)+px ($R/4)+px;
+
+  .inputs-bubble {
+    grid-column: 2/4;
+    grid-row: 2/4;
+    z-index: 2;
+    > div {
+      @include bubble(2*$R);
+      grid-template-rows: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
   .content-sheet {
+    overflow: auto;
     grid-column: 3/6;
     grid-row: 3/7;
     z-index: 1;
@@ -32,27 +96,16 @@ $background-color: #ffd54f;
       height: 100%;
 
       display: grid;
-      grid-template-columns: ($R/2)+px auto ($R/2-20)+px ($R/4+10)+px ($R/4)+px;
-      grid-template-rows: ($R/6)+px ($R/4)+px auto ($R/5)+px;
+      grid-template-columns: ($R+10)+px auto ($R)+px ($R+10)+px;
+      grid-template-rows: ($R/2)+px ($R/4)+px ($R/4)+px auto ($R/4)+px;
       > .switch {
-        grid-column: 3/5;
+        grid-column: 3/4;
         grid-row: 2/3;
       }
-      > .chart {
+      > .chart, .table {
         grid-column: 2/4;
-        grid-row: 3/4;
+        grid-row: 4/5;
       }
-    }
-  }
-
-  .inputs-bubble {
-    grid-column: 2/4;
-    grid-row: 2/4;
-    z-index: 2;
-    > div {
-      @include bubble($R);
-      grid-template-rows: repeat(4, 1fr);
-      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -61,7 +114,7 @@ $background-color: #ffd54f;
     grid-row: 5/6;
     z-index: 3;
     > div {
-      @include bubble($R);
+      @include bubble(2*$R);
     }
   }
 }
