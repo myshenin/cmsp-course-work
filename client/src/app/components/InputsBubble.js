@@ -111,6 +111,7 @@ export default class InputsBubble extends React.Component {
             stop: false,
         });
         this.props.next.getNext(initialPayload);
+        this.props.next.setIterationAmount(Number.parseInt(this.state.textFields[2].value));
     }
 
     onStop() {

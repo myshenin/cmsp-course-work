@@ -14,6 +14,7 @@ import {connect} from "react-redux";
 
 
 import getNext from "../redux/actions/getNext";
+import setIterationAmount from "../redux/actions/setIterationAmount";
 injectTapEventPlugin();
 
 
@@ -28,7 +29,7 @@ class App extends React.Component {
                 <div className="main">
                     <InputsBubble next={this.props}/>
                     <ContentPaper next={this.props}/>
-                    <DataBubble/>
+                    <DataBubble next={this.props}/>
                 </div>
             </MuiThemeProvider>
         );
@@ -37,7 +38,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        next: state.next
+        next: state.next,
+        iterationAmount: state.iterationAmount
     };
 };
 
@@ -45,6 +47,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getNext: (payload) => {
             dispatch(getNext(payload));
+        },
+        setIterationAmount: (payload) => {
+            dispatch(setIterationAmount(payload));
         }
     };
 };
