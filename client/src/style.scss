@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 @import '../node_modules/mathsass/dist/math';
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 $R: 150;
 $background-color: #ffd54f;
@@ -14,57 +16,6 @@ $background-color: #ffd54f;
   padding: ($radius * (sqrt(2) - 1) / (2 * sqrt(2)) + 10)+px;
   display: grid;
 }
-
-//.main {
-//  height: 100vh;
-//  background: $background-color;
-//
-//  display: grid;
-//  grid-template-columns: ($R/2)+px ($R/2)+px ($R/2)+px auto ($R/2)+px ($R/2)+px ($R/2)+px;
-//  grid-template-rows: ($R/18)+px ($R/2)+px ($R/2)+px auto ($R)+px auto auto;
-//
-//  .content-sheet {
-//    grid-column: 3/6;
-//    grid-row: 3/7;
-//    z-index: 1;
-//
-//    > div {
-//      height: 100%;
-//
-//      display: grid;
-//      grid-template-columns: ($R/2)+px auto ($R/2-20)+px ($R/4+10)+px ($R/4)+px;
-//      grid-template-rows: ($R/6)+px ($R/4)+px auto ($R/5)+px;
-//      > .switch {
-//        grid-column: 3/5;
-//        grid-row: 2/3;
-//      }
-//      > .chart, .table {
-//        grid-column: 2/4;
-//        grid-row: 3/4;
-//      }
-//    }
-//  }
-//
-//  .inputs-bubble {
-//    grid-column: 2/4;
-//    grid-row: 2/4;
-//    z-index: 2;
-//    > div {
-//      @include bubble($R);
-//      grid-template-rows: repeat(4, 1fr);
-//      grid-template-columns: repeat(2, 1fr);
-//    }
-//  }
-//
-//  .data-bubble {
-//    grid-column: 5/7;
-//    grid-row: 5/6;
-//    z-index: 3;
-//    > div {
-//      @include bubble($R);
-//    }
-//  }
-//}
 
 .main {
   height: 100vh;
