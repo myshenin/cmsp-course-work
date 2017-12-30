@@ -116,12 +116,30 @@ module.exports.calculate = (event, context, callback) => {
         })),
     ])
         .then(() => {
+            return new Promise((resolve, reject) => lambda.invoke({
+                FunctionName: 'values-dev-hello',
+                Payload: JSON.stringify(input)
+            }, (error, data) => {
+                if (error) {
+                    callback(null, {
+                        statusCode: 500,
+                        body: JSON.stringify(error),
+                    });
+                    reject();
+                } else {
+                    const result = JSON.parse(JSON.parse(data.Payload).body);
+                    input.values = result;
+                    resolve();
+                }
+            }));
+        })
+        .then(() => {
             input.iteration++;
 
             const response = {
                 statusCode: 200,
                 headers: {
-                    "Access-Control-Allow-Origin" : "*"
+                    "Access-Control-Allow-Origin": "*"
                 },
                 body: JSON.stringify(input)
             };
