@@ -3,7 +3,6 @@ const binomial = (n, k, p) => (factorial(n) / (factorial(k) * factorial(n - k)))
 
 module.exports.analitic = (event, context, callback) => {
     const {n, p} = event;
-    let total = 0;
     let _p_ = [];
     for (let i = 0; i < n + 1; i++){
         let tmp = binomial(n, i, p);
