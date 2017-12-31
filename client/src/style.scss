@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 @import '../node_modules/mathsass/dist/math';
+@import "../node_modules/react-responsive-carousel/lib/styles/carousel.min.css";
 
 $R: 150;
 $background-color: #ffd54f;
+$data-bubble-background: #607d8b;
 
 * {
   font-family: 'Roboto', sans-serif;
@@ -65,5 +67,20 @@ $background-color: #ffd54f;
     > div {
       @include bubble(2*$R);
     }
+  }
+}
+
+.value-slider, .value {
+  width: 200px;
+  height: 150px;
+}
+
+.value {
+  background: $data-bubble-background;
+  > div {
+    padding: 10px 0;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 }
