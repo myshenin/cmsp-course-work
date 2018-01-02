@@ -19,16 +19,16 @@ $data-bubble-background: #607d8b;
 
 .main {
   height: 100vh;
-  background: $background-color;
+  background-color: $background-color;
   overflow: auto;
 
   display: grid;
-  grid-template-columns: ($R/4)+px ($R)+px ($R)+px auto ($R)+px ($R)+px ($R/4)+px;
-  grid-template-rows: ($R/4)+px ($R)+px ($R)+px auto (2*$R)+px ($R/1.5)+px ($R/4)+px;
+  grid-template-columns: ($R/2)+px ($R)+px ($R/4)+px ($R/4)+px ($R/4)+px ($R/4)+px auto ($R)+px ($R/2)+px ($R/4)+px ($R/4)+px ($R/2)+px;
+  grid-template-rows: ($R/2)+px ($R)+px (3*$R/4)+px ($R/4)+px ($R/4)+px auto ($R/4)+px ($R/4)+px ($R/2)+px ($R)+px ($R)+px ($R/2)+px;
 
   .inputs-bubble {
-    grid-column: 2/4;
-    grid-row: 2/4;
+    grid-column: 2/7;
+    grid-row: 2/5;
     z-index: 2;
     > div {
       @include bubble(2*$R);
@@ -37,12 +37,17 @@ $data-bubble-background: #607d8b;
     }
   }
 
+  .upload {
+    grid-column: 4/6;
+    grid-row: 4/6;
+    z-index: 4;
+  }
+
   .content-sheet {
     overflow: auto;
-    grid-column: 3/6;
-    grid-row: 3/7;
+    grid-column: 3/9;
+    grid-row: 3/12;
     z-index: 1;
-
     > div {
       height: 100%;
 
@@ -61,12 +66,18 @@ $data-bubble-background: #607d8b;
   }
 
   .data-bubble {
-    grid-column: 5/7;
-    grid-row: 5/6;
+    grid-column: 8/12;
+    grid-row: 7/11;
     z-index: 3;
     > div {
       @include bubble(2*$R);
     }
+  }
+
+  .download {
+    grid-column: 10/12;
+    grid-row: 7/9;
+    z-index: 5;
   }
 }
 

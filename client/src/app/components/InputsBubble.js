@@ -120,6 +120,7 @@ export default class InputsBubble extends React.Component {
         })
     }
 
+
     render() {
         return (
             <Paper className='inputs-bubble' circle={true} zDepth={2} style={style.paper}>
