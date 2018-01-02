@@ -83,6 +83,29 @@ export default class InputsBubble extends React.Component {
         if ((nextProps.next.next.iteration < this.state.textFields[2].value) && (!this.state.stop)) {
             this.props.next.getNext(nextProps.next.next);
         }
+        this.setState({
+            textFields: [
+                {
+                    name: 'N',
+                    hint: 'N',
+                    value: nextProps.next.next.n || '',
+                    valid: true
+                },
+                {
+                    name: 'p',
+                    hint: 'p',
+                    value: nextProps.next.next.p || '',
+                    valid: true
+                },
+                {
+                    name: 'iterations',
+                    hint: 'Итерации',
+                    value: nextProps.next.next.iteration || '',
+                    valid: true
+                }
+            ]
+        });
+
     }
 
     onChange(event) {
@@ -119,6 +142,7 @@ export default class InputsBubble extends React.Component {
             stop: true,
         })
     }
+
 
     render() {
         return (

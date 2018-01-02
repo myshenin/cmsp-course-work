@@ -3,6 +3,9 @@ const next = (state = {}, action) => {
         case 'GET_NEXT_FULFILLED': {
            state = action.payload.data;
         } break;
+        case 'UPLOAD_NEXT': {
+            state = action.payload;
+        } break;
     }
     return state;
 };
